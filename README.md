@@ -1,4 +1,5 @@
 # Random Episode Finder
+![Lint](https://github.com/jelly-fish-dev/Random-episode-finder/actions/workflows/lint.yml/badge.svg)
 
 Pick a random episode from any TV show.
 
