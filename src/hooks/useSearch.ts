@@ -9,10 +9,7 @@ export function useSearch() {
   const { searchShows, loading, error } = useTMDB()
 
   useEffect(() => {
-    if (!query.trim()) {
-      setResults([])
-      return
-    }
+    if (!query.trim()) return
     const timer = setTimeout(async () => {
       const data = await searchShows(query)
       if (data) {
@@ -23,5 +20,7 @@ export function useSearch() {
     return () => clearTimeout(timer)
   }, [query, searchShows])
 
-  return { query, setQuery, results, dropdownOpen, setDropdownOpen, loading, error }
+  const visibleResults = query.trim() ? results : []
+
+  return { query, setQuery, results: visibleResults, dropdownOpen, setDropdownOpen, loading, error }
 }
