@@ -2,8 +2,10 @@ import type { ChangeEventHandler } from "react";
 
 interface searchTerm{
     value: string,
-    searchHandler: ChangeEventHandler,
+    searchHandler: ChangeEventHandler<HTMLInputElement>,
     placeholder: string,
+    onFocus?: () => void,
+    onBlur?: () => void,
 }
 
 export const SearchBar = (props: searchTerm) => {
@@ -12,7 +14,10 @@ export const SearchBar = (props: searchTerm) => {
             type="Search"
             className=""
             value={props.value}
+            placeholder={props.placeholder}
             onChange={props.searchHandler}
+            onFocus={props.onFocus}
+            onBlur={props.onBlur}
         />
     )
 }
